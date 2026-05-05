@@ -41,6 +41,29 @@ public class InteracaoObjeto : MonoBehaviour
                 if (hit.transform.IsChildOf(this.transform) || hit.transform == this.transform)
                 {
                     AlternarEscala();
+
+                    // ============================
+
+                    // Dentro do bloco if (Physics.Raycast(raio, out hit))
+                    if (hit.transform.IsChildOf(this.transform) || hit.transform == this.transform)
+                    {
+                        // Verifica se há um valor de dado esperando para ser usado
+                        if (GameManager.Instancia.ValorDadoPendente > 0)
+                        {
+                            SistemaVida sistemaVida = GetComponent<SistemaVida>();
+                            if (sistemaVida != null)
+                            {
+                                sistemaVida.ReceberDano(GameManager.Instancia.ValorDadoPendente);
+
+                                // Zera o valor após o uso para evitar que o mesmo dado seja aplicado duas vezes
+                                GameManager.Instancia.ValorDadoPendente = 0;
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log("Nenhum valor de dado lido. Role o dado primeiro.");
+                        }
+                    }
                 }
             }
         }
