@@ -36,6 +36,8 @@ public class CalculoFaceDado : MonoBehaviour
             }
         }
 
+        Debug.Log("Valor da face superior: " + valorFaceSuperior);
+
         return valorFaceSuperior;
     }
 }

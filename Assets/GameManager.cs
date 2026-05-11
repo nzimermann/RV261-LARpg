@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     // Armazena o valor do dado lido. 0 significa que não há dano pendente.
     public int ValorDadoPendente { get; set; } = 0;
 
+    // Referência direta para o script anexado ao Multi-Target
+    public CalculoFaceDado dadoFisico;
+
     void Awake()
     {
         if (Instancia == null)
@@ -25,6 +28,15 @@ public class GameManager : MonoBehaviour
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             SimularLeituraDeDado();
+            //if (dadoFisico != null)
+            //{
+            //    ValorDadoPendente = dadoFisico.ObterFaceSuperior();
+            //    Debug.Log("Valor físico registrado no GameManager: " + ValorDadoPendente);
+            //}
+            //else
+            //{
+            //    Debug.LogError("O script CalculoFaceDado não foi atribuído no GameManager.");
+            //}
         }
     }
 

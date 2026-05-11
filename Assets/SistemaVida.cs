@@ -1,14 +1,13 @@
 using UnityEngine;
-using TMPro; // Obrigatório para manipular TextMeshPro via código
+using TMPro;
 
 public class SistemaVida : MonoBehaviour
 {
     public int vidaMaxima = 10;
     private int vidaAtual;
 
-    // Arraste o seu objeto de texto para este campo no Inspector do Unity
     public TMP_Text textoVidaHUD;
-    
+
     // Referência ao motor de animação
     private Animator animator;
     private Collider colisorPersonagem;
@@ -49,10 +48,6 @@ public class SistemaVida : MonoBehaviour
 
     private void Morrer()
     {
-        Debug.Log($"{gameObject.name} foi eliminado.");
-        // Desativa a renderização e o colisor do personagem (e o texto some junto pois é filho)
-        // gameObject.SetActive(false);
-
         estaMorto = true;
 
         // Dispara a transição de estado no Animator
